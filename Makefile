@@ -1,13 +1,11 @@
+tests.o: tests.cpp
+	g++ -g -c tests.cpp  
 
-
-tests.o:tests.cpp
-	g++ -c tests.cpp
-
-modele.o:modele.cpp
-	g++ -c modele.cpp
+modele.o: modele.cpp
+	g++ -g -c modele.cpp  
 
 test: modele.o tests.o
-	g++ modele.o tests.o -o test
+	g++ -g modele.o tests.o -o tests  
 
 clean:
-	rm modele.o tests.o test
+	rm -f modele.o tests.o tests

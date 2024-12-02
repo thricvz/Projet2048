@@ -36,10 +36,15 @@ Plateau plateauVide(){
  **/
 Plateau plateauInitial(){
     Plateau plateauJeu=plateauVide();
-    for (int i=0;i<2;i++){
-        int ligneAlea=rand()%4 + 1;
-        int colonneAlea=rand()%4 + 1;
-        plateauJeu[ligneAlea][colonneAlea]=tireDeuxOuQuatre();
+    int ligneAlea,colonneAlea;
+    int positions_tires = 0;
+    while(positions_tires<2){
+        ligneAlea=rand()%4;
+        colonneAlea=rand()%4;
+        if(plateauJeu[ligneAlea][colonneAlea]==0){
+            plateauJeu[ligneAlea][colonneAlea]=tireDeuxOuQuatre();
+            positions_tires +=1;
+        }
     }
     return plateauJeu;
 }
