@@ -79,7 +79,7 @@ Plateau déplacementGauche(Plateau plateau){
  **/
 Plateau déplacementDroite(Plateau plateau){
     for (int i=0;i<4;i++){
-        for (int j=2;j>0;j--){
+        for (int j=2;j>-1;j--){
             //deplace les elements au plus a gauche
             int indice = j;
             while(indice!=3){
@@ -104,14 +104,17 @@ Plateau déplacementDroite(Plateau plateau){
 Plateau déplacementHaut(Plateau plateau){
     for (int i=0;i<4;i++){
         for (int j=1;j<4;j++){
-            if (plateau[j-1][i]!=0){
-                if (plateau[j-1][i]==plateau[j][i]){
-                        plateau[j-1][i]=2*(plateau[j][i]);
-                        plateau[j][i]=0;
+            //deplace les elements au plus a gauche
+            int indice = j;
+            while(indice!=0){
+                if(plateau[indice-1][i]==plateau[indice][i] ||plateau[indice-1][i]==0){
+                    plateau[indice-1][i] += plateau[indice][i];
+                    plateau[indice][i]=0;
+                    indice--;
+                }else{
+                    break;
                 }
-            }else{
-                plateau[j-1][i]=plateau[j][i];
-                plateau[j][i]=0;
+
             }
         }
     }
@@ -124,15 +127,18 @@ Plateau déplacementHaut(Plateau plateau){
  **/
 Plateau déplacementBas(Plateau plateau){
     for (int i=0;i<4;i++){
-        for (int j=0;j<3;j++){
-            if (plateau[j+1][i]!=0){
-                if (plateau[j+1][i]==plateau[j][i]){
-                        plateau[j+1][i]=2*(plateau[j][i]);
-                        plateau[j][i]=0;
+        for (int j=2;j>-1;j--){
+            //deplace les elements au plus a gauche
+            int indice = j;
+            while(indice!=3){
+                if(plateau[indice+1][i]==plateau[indice][i] ||plateau[indice+1][i]==0){
+                    plateau[indice+1][i] += plateau[indice][i];
+                    plateau[indice][i]=0;
+                    indice++;
+                }else{
+                    break;
                 }
-            }else{
-                plateau[j+1][i]=plateau[j][i];
-                plateau[j][i]=0;
+
             }
         }
     }

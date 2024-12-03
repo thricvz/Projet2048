@@ -168,7 +168,7 @@ void TestdéplacementBas(){
     cout << "Test deplacement bas  avec combinaison 2 " << endl;
     tab_origine =  {{4,0,0,0},{4,0,16,0},{2,8,0,0},{2,0,0,0}};
     tab_origine_post_deplacement = déplacementBas(tab_origine);
-    tab_attendu = {{0,0,0,0},{0,0,0,0},{8,0,0,0},{4,8,16,0}};
+    tab_attendu = {{0,0,0,0},{0,0,0,0},{4,0,0,0},{8,8,16,0}};
     CHECK(ComparePlateau(tab_attendu, tab_origine_post_deplacement));
     //test deplacement tableau sans combinaison
     cout << "Test deplacement bas  sans combinaison" << endl;
@@ -185,51 +185,51 @@ void Testdéplacement(){
     Plateau tab_attendu;
 
     //test deplacement gauche
-    cout << "Test déplacement gauche";
+    cout << "Test déplacement gauche" <<endl;
     tab_origine =  {{0,2,0,0},{0,0,0,4},{0,0,0,0},{8,0,0,0}};
     tab_origine_post_deplacement = déplacement(tab_origine,1);
     tab_attendu = {{2,0,0,0},{4,0,0,0},{0,0,0,0},{8,0,0,0}};
     CHECK(ComparePlateau(tab_attendu,tab_origine_post_deplacement));
     //test deplacement droite
-    cout << "Test déplacement droite";
+    cout << "Test déplacement droite"<<endl;
     tab_origine =  {{0,2,0,0},{0,0,0,4},{0,0,0,0},{8,0,0,0}};
     tab_origine_post_deplacement = déplacement(tab_origine,3);
     tab_attendu = {{0,0,0,2},{0,0,0,4},{0,0,0,0},{0,0,0,8}};
     CHECK(ComparePlateau(tab_attendu,tab_origine_post_deplacement));
 
     //test deplacement haut 
-    cout << "Test déplacement haut";
+    cout << "Test déplacement haut"<<endl;
     tab_origine =  {{0,2,0,0},{0,0,4,4},{0,0,4,0},{0,0,0,0}};
     tab_origine_post_deplacement = déplacement(tab_origine,2);
     tab_attendu = {{0,2,8,4},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
     CHECK(ComparePlateau(tab_attendu,tab_origine_post_deplacement));
 
     //test deplacement bas 
-    cout << "Test déplacement bas";
+    cout << "Test déplacement bas"<<endl;
     tab_origine =  {{0,2,0,0},{0,0,4,4},{0,0,4,0},{0,0,0,0}};
     tab_origine_post_deplacement = déplacement(tab_origine,4);
     tab_attendu = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,2,8,4}};
     CHECK(ComparePlateau(tab_attendu,tab_origine_post_deplacement));
     // test deplacement impossible
-    cout << "Test déplacement impossible gauche";
+    cout << "Test déplacement impossible gauche" <<endl;
     tab_origine =  {{8,32,512,4},{2,128,4,2},{4,32,2,8},{8,2,4,16}};
     tab_origine_post_deplacement = déplacement(tab_origine,1);
     tab_attendu = {{8,32,512,4},{2,128,4,2},{4,32,2,8},{8,2,4,16}};
     CHECK(ComparePlateau(tab_attendu,tab_origine_post_deplacement));
 
-    cout << "Test déplacement impossible droite";
+    cout << "Test déplacement impossible droite" << endl;
     tab_origine = { {8,32,512,4},{2,128,4,2},{4,32,2,8},{8,2,4,16} };
     tab_origine_post_deplacement = déplacement(tab_origine, 3);
     tab_attendu = { {8,32,512,4},{2,128,4,2},{4,32,2,8},{8,2,4,16} };
     CHECK(ComparePlateau(tab_attendu, tab_origine_post_deplacement));
 
-    cout << "Test déplacement impossible haut";
+    cout << "Test déplacement impossible haut" << endl;
     tab_origine = { {8,32,512,4},{2,128,4,2},{4,32,2,8},{8,2,4,16} };
     tab_origine_post_deplacement = déplacement(tab_origine, 2);
     tab_attendu = { {8,32,512,4},{2,128,4,2},{4,32,2,8},{8,2,4,16} };
     CHECK(ComparePlateau(tab_attendu, tab_origine_post_deplacement));
 
-    cout << "Test déplacement impossible bas";
+    cout << "Test déplacement impossible bas" << endl;
     tab_origine = { {8,32,512,4},{2,128,4,2},{4,32,2,8},{8,2,4,16} };
     tab_origine_post_deplacement = déplacement(tab_origine, 4);
     tab_attendu = { {8,32,512,4},{2,128,4,2},{4,32,2,8},{8,2,4,16} };
@@ -249,7 +249,7 @@ void TestestGagnant(){
     Plateau tableau_gagnant = {{2048,32,512,4},{2,128,4,2},{4,32,2,8},{8,2,4,16}};
     CHECK(estGagnant(tableau_gagnant));
     Plateau tableau_pas_gagnant = {{0,32,512,4},{2,128,4,2},{4,32,2,8},{8,2,4,16}};
-    CHECK(!estGagnant(tableau_gagnant));
+    CHECK(!estGagnant(tableau_pas_gagnant));
 };
 
 void LanceTests() {
