@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <cstring>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -10,9 +11,28 @@ using namespace std;
 using Plateau = vector<vector<int>>;
 // Vous pouvez ajouter des fonctions à ce fichier si besoin est
 
+
 /** génère aléatoirement un 2 ou un 4 avec des probabilités respectives de 9/10 et 1/10
  *  @return 2 ou 4
  **/
+int touche_direction(const char dir){
+    int int_dir;
+    switch(dir){
+        case 'q':
+            int_dir = 1;
+            break;
+        case 'z':
+            int_dir = 2;
+            break;
+        case 'd':
+            int_dir = 3;
+            break;
+        case 's':
+            int_dir = 4;
+            break;  
+    }
+    return int_dir;
+}
 int tireDeuxOuQuatre(){
     int nombre=rand()%10 + 1;
     if (nombre<=9){
@@ -20,6 +40,29 @@ int tireDeuxOuQuatre(){
     }else return 4;
 }
 
+Plateau genere_nouvelle_case(Plateau p){
+    int ligneAlea,colonneAlea;
+    int positions_tire = false;
+    while(!positions_tire){
+        ligneAlea=rand()%4;
+        colonneAlea=rand()%4;
+        if(p[ligneAlea][colonneAlea]==0){
+            p[ligneAlea][colonneAlea]=tireDeuxOuQuatre();
+            positions_tire = true;
+        }
+    }
+    return p;
+};
+
+bool touche_valide(const char touche){
+    char touches_valides[4] = {'z','q','s','d'};
+    for(int i=0;i<4;i++){
+        if(touches_valides[i]==touche){
+            return true;
+        }
+    }
+    return false;
+};
 /** génère un plateau de dimensions 4*4 ne contenant que des 0
  *  @return un plateau vide
  **/
@@ -181,69 +224,15 @@ int nombreMax(Plateau p){
  * @param p le plateau
  **/
 string dessine(Plateau p){
-    string max=to_string(nombreMax(p));
-    int espacement=max.size();
-    int nombreAffichage=13+4*espacement;
-    string caractere="*";
-    string jeu="";
-    for (int i=1;i<10;i++){
-        
-        if (i%2!=0){
-            for (int j=0;j<nombreAffichage;j++){
-                jeu=jeu+caractere;
-            }
-            jeu=jeu+"\n";
-        }
-            
-        else{
-            jeu=jeu+caractere;
-            for (int j=0;j<4;j++){
-                jeu=jeu+" ";
-                if (p[i/2-1][j]==0){
-                    for (int k=0;k<=espacement;k++){
-                        jeu=jeu+" ";
-                    }
-                    jeu=jeu+caractere;
-                }
-                else{
-                    int nombre=p[i/2-1][j];
-                    string nombre_string=to_string(nombre);
-                    string case_p="";
-                    if(nombre_string.size()==espacement){
-                        jeu=jeu+nombre_string;
-                    }
-                    else{
-                        
-                        if((nombre_string.size()%2)!=0){
-                            for (int k=0;k<(espacement-nombre_string.size())/2;k++){
-                                case_p=case_p+" ";
-                            }
-                            jeu=jeu+case_p+nombre_string+case_p;
-                        }
-
-                        else{
-                            if(espacement%2==0){
-                                for (int k=0;k<(espacement-nombre_string.size())/2;k++){
-                                    case_p=case_p+" ";
-                                }
-                                jeu=jeu+case_p+nombre_string+case_p;
-                            }
-
-                            else{
-                                for (int k=0;k<(espacement-nombre_string.size())/2;k++){
-                                    case_p=case_p+" ";
-                                }
-                                jeu=jeu+case_p+nombre_string+" "+case_p;
-                            }
-                        }
-                    }
-                    jeu=jeu+" "+caractere;
-                }
-            }
-        jeu=jeu+"\n";
-        }
+    string d;
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            d = d + std::to_string(p[i][j]);
+            d.push_back(' ');
+        }   
+        d.push_back('\n');
     }
-    return jeu;
+    return d;
 }
 
 /** permet de savoir si une partie est terminée

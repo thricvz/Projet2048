@@ -21,6 +21,20 @@ bool ComparePlateau(Plateau plateau1,Plateau plateau2){
     }
     return true;
 }
+void Testtouche_valide(){
+    CHECK(touche_valide('z'));
+    CHECK(touche_valide('q'));
+    CHECK(touche_valide('s'));
+    CHECK(touche_valide('d'));
+    CHECK(!touche_valide('o'));
+
+};
+void Testtouche_direction(){
+    CHECK(touche_direction('z')==2);
+    CHECK(touche_direction('q')==1);
+    CHECK(touche_direction('s')==4);
+    CHECK(touche_direction('d')==3);
+}
 void TesttireDeuxOuQuatre(int n_tirages){
     int tirage;
     for(int i=0;i<n_tirages;i++){
@@ -252,6 +266,7 @@ void TestestGagnant(){
     CHECK(!estGagnant(tableau_pas_gagnant));
 };
 
+
 void LanceTests() {
     cout << "TEST FUNCTION tireDeuxOuQuatre()" << endl;
     TesttireDeuxOuQuatre(4);
@@ -284,7 +299,11 @@ void LanceTests() {
     cout << "TEST FUNCTION estGagnant()" << endl;
     TestestGagnant();
 
-   
+    cout << "TEST FUNCTION touche_valide" << endl;
+    Testtouche_valide();
+
+    cout << "TEST FUNCTION touche_direction" << endl;
+    Testtouche_direction();
 }
 int main(){
     LanceTests();

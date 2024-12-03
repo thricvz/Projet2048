@@ -10,11 +10,24 @@ using Plateau = vector<vector<int>>;
  *  @return 2 ou 4
  **/
 int tireDeuxOuQuatre();
+Plateau genere_nouvelle_case(Plateau p);
 
+/*Renvoie si la touch est valide
+* @param touche correspond a la touche
+* @return True si valide False sinon
+*/
+
+bool touche_valide(const char touche);
+/** transforme les touches de clavier en chiffre 
+ * @param dir correspond a une touche parmi z,s,q,d
+ * @return renvoie un chiffre correspondant à la direction entre 1 et 4
+ */
+int touche_direction(const char dir);
 /** génère un plateau de dimensions 4*4 ne contenant que des 0
  *  @return un plateau vide
  **/
 Plateau plateauVide();
+
 
 /** génère deux nombres sur des cases aléatoires d'un plateau vide
  *  @return un plateau en début de jeu
