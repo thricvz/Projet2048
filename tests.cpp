@@ -71,7 +71,7 @@ void TestdéplacementGauche(){;
     cout << "Test deplacement gauche tableau avec combinaison 2" << endl;
     tab_origine =  {{2,4,4,2},{4,4,8,8},{2,4,8,0},{2,4,0,0}};
     tab_origine_post_deplacement = déplacementGauche(tab_origine);
-    tab_attendu = {{2,8,2,0},{8,16,0,0},{2,4,8,0},{2,4,0,0}};
+    tab_attendu = {{2,8,2,0},{16,8,0,0},{2,4,8,0},{2,4,0,0}};
     CHECK(ComparePlateau(tab_attendu,tab_origine_post_deplacement));
     //test deplacement tableau sans combinaison
     cout << "Test deplacement gauche tableau sans combinaison" << endl;

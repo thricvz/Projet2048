@@ -56,14 +56,17 @@ Plateau plateauInitial(){
 Plateau déplacementGauche(Plateau plateau){
     for (int i=0;i<4;i++){
         for (int j=1;j<4;j++){
-            if (plateau[i][j-1]!=0){
-                if (plateau[i][j-1]==plateau[i][j]){
-                        plateau[i][j-1]=2*(plateau[i][j-1]);
-                        plateau[i][j]=0;
+            //deplace les elements au plus a gauche
+            int indice = j;
+            while(indice!=0){
+                if(plateau[i][indice-1]==plateau[i][indice] ||plateau[i][indice-1]==0){
+                    plateau[i][indice-1]+=plateau[i][indice];
+                    plateau[i][indice]=0;
+                    indice--;
+                }else{
+                    break;
                 }
-            }else{
-                plateau[i][j-1]=plateau[i][j];
-                plateau[i][j]=0;
+
             }
         }
     }
@@ -76,15 +79,18 @@ Plateau déplacementGauche(Plateau plateau){
  **/
 Plateau déplacementDroite(Plateau plateau){
     for (int i=0;i<4;i++){
-        for (int j=0;j<3;j++){
-            if (plateau[i][j+1]!=0){
-                if (plateau[i][j]==plateau[i][j+1]){
-                        plateau[i][j+1]=2*(plateau[i][j]);
-                        plateau[i][j]=0;
+        for (int j=2;j>0;j--){
+            //deplace les elements au plus a gauche
+            int indice = j;
+            while(indice!=3){
+                if(plateau[i][indice+1]==plateau[i][indice] ||plateau[i][indice+1]==0){
+                    plateau[i][indice+1]+=plateau[i][indice];
+                    plateau[i][indice]=0;
+                    indice++;
+                }else{
+                    break;
                 }
-            }else{
-                plateau[i][j+1]=plateau[i][j];
-                plateau[i][j]=0;
+
             }
         }
     }
