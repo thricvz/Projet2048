@@ -1,5 +1,14 @@
 all: jeu 
 
+graphics.o:graphics.cpp
+	g++ -c graphics.cpp
+
+sfml:graphics.o modele.o
+	g++ graphics.o modele.o -o sfml-app -lsfml-graphics -lsfml-window -lsfml-system
+
+clean_sfml: 
+	rm graphics.o sfml-app
+
 tests.o: tests.cpp
 	g++ -g -c tests.cpp  
 

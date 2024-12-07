@@ -223,6 +223,7 @@ int nombreMax(Plateau p){
 /** affiche un plateau
  * @param p le plateau
  **/
+//a changer
 string dessine(Plateau p){
     string d;
     for(int i=0;i<4;i++){
