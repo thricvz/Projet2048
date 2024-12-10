@@ -12,22 +12,12 @@ kernelspec:
 
 # Rapport de projet 2048
 
-*Les paragraphes en italique comme celui-ci vous donnent des
-indications sur le contenu attendu; ils sont à supprimer une fois
-votre rapport rédigé.*
-
-*Ce rapport pourra servir de support pour votre présentation orale.*
-
-*Soyez objectifs et factuels! Vous ne serez pas évalué sur ce que vous
-affirmez, mais sur la pertinence et la justesse de ce que vous
-affirmez.*
-
 +++
 
 ## Auteurs
 
-- Nom, prénom, courriel, groupe
-- Nom, prénom, courriel, groupe
+- Altit, Adam, adam.altit@gmail.com, LDDIM2
+- Fontez-Vaz, Eric, ericvaz2505@gmail.com, LDDIM2
 
 +++
 
@@ -60,9 +50,36 @@ confiance: présence de tests, bogues et limitations connus, etc.
 
 +++
 
+### Niveau 0 :
+- Fonctions crées sauf problème avec fontion affichage, documentées, testées
+- Pas encore de score
+- Colonnes mal alignées
+- Changement d'une fonction dans le modèle de départ
+- Ajout d'une fonction renvoyant le maximum du plateau
+
++++
+
+### Niveau 1 :
+- Couleur ?
+- 
+
++++
+
+### Niveau 2 :
+- Mise en place de Makefile pour compilation
+- Mise en place de Git
+
++++
+
+### Niveau 3 :
+- Interface graphique avec SFML
+- Tentative création bande audio avec Fl studio
+
++++
+
 ## Démonstration
 
-:::{consignes}
+:::{admonition} Consignes
 
 Soutenez ce que vous affirmez dans la section précédente au moyen de
 quelques exemples **bien choisis**. Vous pouvez par exemple compiler
@@ -82,16 +99,15 @@ vous avez réussi à le faire.
 
 :::
 
-Pour compiler le projet, vous pouvez exécuter la commande suivante :
++++
 
-```{code-cell} ipython3
-! clang g++ 2048.cpp -o 2048
-```
+On a remarqué que la documentation de la fonction "estTerminé" n'était pas cohérente.
 
-Vous pourrez alors lancer le jeu depuis un terminal avec :
-```
-./2048
-```
+En effet elle devait renvoyé un booléens en fonction de si le plateau était vide, ce qu'on n'a pas trouvé logique et utile.
+
+Avec l'accord du chargé de TD, on a donc modifié la fonction afin qu'elle renvoit un booléens en fonction de si un mouvement est possible sur le plateau. La documentation à été modifiée en conséquences.
+
++++
 
 ## Organisation du travail
 
@@ -105,6 +121,16 @@ vos enseigants), précisez le.
 
 +++
 
+Dans un premier temps, on a trouvé plus pratique de se séparer le travail de la manière suivante : l'un s'occupe de toute les fonctions, l'autre de tout les tests.
+
+On a utilisé Visual Studio code à la place de Jupyter pour des raisons d'ergonomie de travail en groupe (mise en place de Git également).
+
+On a ensuite profité des séances de td afin de rassembler nos idées et pour décider de la répartition des prochaines amélioration du projet
+
+Seul internet a été notre aide, lors de notre recherches pour certaines fonctionnalités.
+
++++
+
 ## Prise de recul
 
 :::{admonition} Consignes
@@ -112,3 +138,15 @@ Décrivez en quelques phrases les difficultés rencontrées, ce que vous
 avez appris à l'occasion du projet, le cas échéant comment vous vous y
 prendriez si vous aviez à le refaire.
 :::
+
++++
+
+On a rencontré des difficultés au niveau de la fonction gérant l'affichage du plateau. On s'est un peu trop compliqué la tâche en pensant que la taille des cases devait être dynamique en fonction du plus grand nombre du plateau. 
+
+Aussi questionnement sur le caractère "aléatoire" de la fonction qui tire un nombre entre 2 et 4. En effet on s'est alors posé la question de si le test devrait être en capacité de vérifier les probabilités. Faut-il exécuter 1000 fois la fonction et alors vérifier que P(4)≈1/10 ± x ?
+
+De plus l'interface graphique n'était au départ pas capable d'enregister les input de l'utilisateurs, problématique.
+
+On a appris l'utilisation du Makefile, magnifique outil pratique pour la compilation.
+
+L'un de nous a aussi pu découvrir Git, qu'on utilisera plus tôt si on avait a refaire un projet
