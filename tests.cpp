@@ -256,7 +256,9 @@ void TestestTerminé(){
     CHECK(estTerminé(tableau_termine));
     Plateau tableau_pas_termine= {{8,8,512,4},{2,0,4,2},{4,32,2,8},{8,2,4,16}};
     CHECK(!estTerminé(tableau_pas_termine));
-};
+    tableau_pas_termine = {{8,8,512,4},{2,2,4,2},{4,32,2,8},{8,2,4,16}};
+    CHECK(!estTerminé(tableau_pas_termine));
+};  
 
 
 void TestestGagnant(){

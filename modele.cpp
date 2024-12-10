@@ -229,7 +229,7 @@ string dessine(Plateau p){
     for(int i=0;i<4;i++){
         for(int j=0;j<4;j++){
             d = d + std::to_string(p[i][j]);
-            d.push_back(' ');
+            d.push_back('\t');
         }   
         d.push_back('\n');
     }

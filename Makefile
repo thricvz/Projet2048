@@ -22,7 +22,7 @@ test: modele.o tests.o
 	g++ -g -c 2048.cpp
 
 jeu: modele.o 2048.o
-	g++ modele.o 2048.o -o jeu
+	g++ modele.o 2048.o -lncurses -o jeu
 
 clean_test:
 	rm -f modele.o tests.o tests
