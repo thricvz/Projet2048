@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 
+
 int main(){
     //demarre n_curses
     initscr();
@@ -16,9 +17,12 @@ int main(){
         mvprintw(6, 0, "Entrez une touche(q,z,d,s): ");
         touche = ' ';
         touche = getch();
+        //transforme les fleches a l'équivalent des touches normales
         if(touche_valide(touche)){
-            plateau_de_jeu = déplacement(plateau_de_jeu,touche_direction(touche));
-            plateau_de_jeu = genere_nouvelle_case(plateau_de_jeu);
+            if(déplacement(plateau_de_jeu,touche_direction(touche)) != plateau_de_jeu){
+                plateau_de_jeu = déplacement(plateau_de_jeu,touche_direction(touche));
+                plateau_de_jeu = genere_nouvelle_case(plateau_de_jeu);
+            }
         }
 
         if(estGagnant(plateau_de_jeu)){
