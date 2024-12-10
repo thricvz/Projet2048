@@ -8,11 +8,18 @@ int main(){
     //demarre n_curses
     initscr();
     keypad(stdscr, TRUE);
-
+    //variables necessaires
     Plateau plateau_de_jeu = plateauInitial();
     char touche;
+    //met en place le moyen de guarder les scores
+    SCORE Stockage_score;
+    Stockage_score.plateau_tiré = plateau_de_jeu;
+    Stockage_score.score = 0;
+
     while(!estTerminé(plateau_de_jeu)){
         clear();
+        Stockage_score.score_str = "Votre score est " + to_string(Stockage_score.score);
+        mvprintw(1, 0,Stockage_score.score_str.c_str());
         mvprintw(2, 0, dessine(plateau_de_jeu).c_str());
         mvprintw(6, 0, "Entrez une touche(q,z,d,s): ");
         touche = ' ';
@@ -21,7 +28,11 @@ int main(){
         if(touche_valide(touche)){
             if(déplacement(plateau_de_jeu,touche_direction(touche)) != plateau_de_jeu){
                 plateau_de_jeu = déplacement(plateau_de_jeu,touche_direction(touche));
+                Stockage_score.plateau_deplacé = plateau_de_jeu;
+                score(Stockage_score.plateau_tiré,Stockage_score.plateau_deplacé,&(Stockage_score.score));
+                
                 plateau_de_jeu = genere_nouvelle_case(plateau_de_jeu);
+                Stockage_score.plateau_tiré = plateau_de_jeu;
             }
         }
 

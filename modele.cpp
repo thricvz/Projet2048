@@ -261,3 +261,32 @@ bool estGagnant(Plateau plateau){
         return false;
     }
 }
+/**Permet de savoir si un element est compris dans le plateau
+ * @param p le plateau dans lequel on cherehe l'element
+ * @param element l'élement pour lequel on cherche s'il existe une occurrence
+ * @return true s'il existe false s'il n'existe pas
+ */
+bool est_inclus(Plateau p,int element){
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            if(p[i][j]==element){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+/**    Incremente le score a chaque nouvelle piece cree
+ * @param debut Le plateau avant le mouvement
+ * @param fin le plateau apres le mouvement
+ * @param score la variable qui garde le score 
+ * */
+void score(Plateau debut,Plateau fin,int *score){
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            if(!est_inclus(debut,fin[i][j])){
+                *(score)+=fin[i][j];
+            }
+        }
+    } 
+};

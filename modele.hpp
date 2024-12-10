@@ -82,3 +82,13 @@ bool estTerminé(Plateau plateau);
  * @return true si le plateau contient un 2048, false sinon
  **/
 bool estGagnant(Plateau plateau);
+
+
+void score(Plateau debut,Plateau fin,int *score);
+
+struct SCORE{
+    string score_str;
+    int score = 0;
+    Plateau plateau_tiré;
+    Plateau plateau_deplacé;
+};
