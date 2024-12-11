@@ -268,6 +268,25 @@ void TestestGagnant(){
     CHECK(!estGagnant(tableau_pas_gagnant));
 };
 
+void Testscore(){
+    
+    Plateau p_vide = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}} ;
+    int score_p_vide = 0;
+    score(p_vide,déplacementGauche(p_vide),&score_p_vide);
+    CHECK(score_p_vide==0);
+
+    
+    Plateau p = {{0,0,0,0},{0,0,2,2},{0,0,0,0},{0,0,0,0}} ;
+    int score_p = 0;
+    score(p,déplacementGauche(p),&score_p);
+    CHECK(score_p==4);
+
+    
+    p = {{0,0,0,0},{0,0,2,2},{4,0,0,0},{0,0,0,0}} ;
+    score_p = 0;
+    score(p,déplacementGauche(p),&score_p);
+    CHECK(score_p==4);
+};
 
 void LanceTests() {
     cout << "TEST FUNCTION tireDeuxOuQuatre()" << endl;
@@ -305,6 +324,9 @@ void LanceTests() {
     Testtouche_valide();
 
     cout << "TEST FUNCTION touche_direction" << endl;
+    Testtouche_direction();
+
+    cout << "TEST FUNCTION score" << endl;
     Testtouche_direction();
 }
 int main(){

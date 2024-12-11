@@ -29,3 +29,6 @@ clean_test:
 
 clean:
 	rm -f modele.o 2048.o jeu
+
+clean_sfml:
+	rm -f modele.o graphics.o sfml-app

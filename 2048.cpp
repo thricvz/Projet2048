@@ -8,6 +8,7 @@ int main(){
     //demarre n_curses
     initscr();
     keypad(stdscr, TRUE);
+    start_color(); 
     //variables necessaires
     Plateau plateau_de_jeu = plateauInitial();
     char touche;
@@ -20,7 +21,12 @@ int main(){
         clear();
         Stockage_score.score_str = "Votre score est " + to_string(Stockage_score.score);
         mvprintw(1, 0,Stockage_score.score_str.c_str());
+        //couleur dans le tableau
+        init_pair(1, COLOR_RED,COLOR_BLACK);
+        attron(COLOR_PAIR(1));
         mvprintw(2, 0, dessine(plateau_de_jeu).c_str());
+        attroff(COLOR_PAIR(1));
+
         mvprintw(6, 0, "Entrez une touche(q,z,d,s): ");
         touche = ' ';
         touche = getch();

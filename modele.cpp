@@ -41,6 +41,7 @@ int tireDeuxOuQuatre(){
 }
 
 Plateau genere_nouvelle_case(Plateau p){
+    srand(time(NULL));
     int ligneAlea,colonneAlea;
     int positions_tire = false;
     while(!positions_tire){
@@ -78,6 +79,7 @@ Plateau plateauVide(){
  *  @return un plateau en début de jeu
  **/
 Plateau plateauInitial(){
+    srand(time(NULL));
     Plateau plateauJeu=plateauVide();
     int ligneAlea,colonneAlea;
     int positions_tires = 0;
@@ -266,10 +268,11 @@ bool estGagnant(Plateau plateau){
  * @param element l'élement pour lequel on cherche s'il existe une occurrence
  * @return true s'il existe false s'il n'existe pas
  */
-bool est_inclus(Plateau p,int element){
+bool est_inclus(Plateau &p,int element){
     for(int i=0;i<4;i++){
         for(int j=0;j<4;j++){
             if(p[i][j]==element){
+                p[i][j] = 0;
                 return true;
             }
         }
