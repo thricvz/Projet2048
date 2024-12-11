@@ -64,7 +64,7 @@ int main()
                 if(plateau_de_jeu[i][j]!=0){
                     sf::RectangleShape square(sf::Vector2f(200.f, 200.f));
                     sf::Text text;
-                    square.setFillColor(sf::Color(50 *i, 100, 200));
+                    square.setFillColor(sf::Color(50 *i, 50*j, 200));
                     square.setPosition(j*200.f, i*200.f);
                     //le texte
                     text.setFont(font);
